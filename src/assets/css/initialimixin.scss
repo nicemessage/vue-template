@@ -1,0 +1,123 @@
+//-----------------------------------宽高百分百----------------------------------------
+//引用例子：@include hv()
+//不传入参数默认宽高百分百
+@mixin hv($h: 100%, $v: 100%) {
+  width: $h;
+  height: $v;
+}
+
+//-----------------------------------浏览器前缀-----------------------------------------
+//例子：@include css3(transition, 0.5s);
+@mixin css3($property, $value) {
+  @each $prefix in -webkit-, -moz-, -ms-, -o-, "" {
+    #{$prefix}#{$property}: $value;
+  }
+}
+
+//-----------------------------------行高-----------------------------------------
+//引用例子:@include line-height (16);
+@mixin line-height($heightValue: 12) {
+  line-height: $heightValue + px; //fallback for old browsers
+  line-height: (0.125 * $heightValue) + rem;
+}
+
+//-----------------------------------隐藏文字-----------------------------------------
+//引用例子：
+//.logo{
+//    background: url("logo.png");
+//    height:100px;
+//    width:200px;
+//   @include hide-text;
+//}
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: -9000px;
+  display: block;
+}
+
+//-----------------------------------正三角-----------------------------------------
+//正三角的通用属性
+%triangleBase {
+  _font-size: 0;
+  _line-height: 0;
+  _overflow: hidden;
+  width: 0;
+  height: 0;
+}
+
+//regulaTriangle:正三角(dashed默认透明)
+//例子：@include regulaTriangle(top,red);
+@mixin regulaTriangle($derection: bottom, $color: #000, $width: 20px) {
+  @extend %triangleBase;
+  border-width: $width;
+  //向右
+  @if $derection==right {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent $color;
+  }
+  //向左
+  @if $derection==left {
+    border-style: dashed solid dashed dashed;
+    border-color: transparent $color transparent transparent;
+  }
+  //向上
+  @if $derection==top {
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent $color transparent;
+  }
+  //向下
+  @if $derection==bottom {
+    border-style: solid dashed dashed dashed;
+    border-color: $color transparent transparent transparent;
+  }
+}
+
+//-----------------------------------边框阴影-----------------------------------------
+//boxshadow:边框阴影
+//例子：@include boxshadow();
+@mixin boxshadow($x: 3px, $y: 3px, $s: 4px, $shadowcolor: #cccccc) {
+  -moz-box-shadow: $x $y $s $shadowcolor; // FF3.5+
+  -webkit-box-shadow: $x $y $s $shadowcolor; // Saf3.0+, Chrome
+  box-shadow: $x $y $s $shadowcolor; // Opera 10.5, IE 9.0
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$shadowcolor}');
+  /* IE6,IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$shadowcolor}')";
+  /* IE8 */
+}
+
+//-----------------------------------动画keyframes生成-----------------------------------------
+//动画keyframes生成
+//例子：@include keyframes(动画名称);
+//@include keyframes(move-the-object) {
+//    0% {
+//        transform: translateX(0);
+//    }
+//    100% {
+//        transform: translateX(200px);
+//    }
+//}
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+// mixin 自定义函数
+//-----------------------------------Black和White-----------------------------------------
+// 例子：background:black(0.15) color:white(0.9);
+@function _black($opacity) {
+  @return rgba(0, 0, 0, $opacity);
+}
+
+@function _white($opacity) {
+  @return rgba(255, 255, 255, $opacity);
+}

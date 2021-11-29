@@ -1,0 +1,90 @@
+/*--------------------el-container样式重置---------------------*/
+.el-container {
+  overflow-y: auto;
+}
+
+/*--------------------el-main样式重置---------------------*/
+.el-main {
+  padding: 0;
+}
+
+/*--------------------el-header样式重置---------------------*/
+.el-header {
+  padding: 0 !important;
+  height: 65px !important;
+  background-color: #141832;
+}
+
+/*--------------------el-menu样式重置---------------------*/
+.el-menu {
+  min-width: 220px;
+  overflow: hidden;
+  border: none !important;
+  overflow-y: auto;
+}
+
+/*--------------------el-form样式重置---------------------*/
+.el-form {
+  .el-form-item {
+    margin-bottom: 18px;
+    .el-form-item__label {
+      font-size: 14px;
+    }
+    .el-form-item__content {
+    }
+    .el-input__inner {
+      font-size: 14px;
+    }
+  }
+}
+
+/*--------------------el-button样式重置---------------------*/
+.el-button {
+}
+
+/*--------------------el-dialog样式重置---------------------*/
+.el-dialog {
+  .el-dialog__header {
+    border-bottom: #d3dbe6 solid 1px;
+    background: rgba(69, 154, 255, 0.03);
+    color: #333;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .el-dialog__body {
+  }
+  .el-dialog__footer {
+    box-shadow: 0 -5px 5px -5px #999;
+    background-color: rgba(69, 154, 255, 0.03);
+  }
+}
+/*--------------------el-drawer样式重置---------------------*/
+.el-drawer {
+  .el-drawer__header {
+    margin-bottom: 0 !important;
+    padding: 10px 20px !important;
+    border-bottom: #d3dbe6 solid 1px;
+    box-shadow: 0 -5px 5px -5px #999;
+    background-color: rgba(69, 154, 255, 0.03);
+  }
+  .el-drawer__body {
+    overflow: auto;
+  }
+}
+
+/*--------------------el-table样式重置---------------------*/
+.el-table {
+}
+/*--------------------图标重置---------------------*/
+// 问号
+.el-icon-question {
+  margin-left: 10px;
+  font-size: 20px;
+  color: #409eff;
+  cursor: pointer;
+}
+
+// tooltip 最大宽度
+.el-tooltip__popper {
+  max-width: 30% !important;
+}

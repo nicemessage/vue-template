@@ -1,0 +1,104 @@
+//init 元素样式初始化
+
+//所有的元素默认使用border-box, 内边距和border将包含在元素的宽高里面
+* {
+  box-sizing: border-box;
+  /* Firefox */
+  -moz-box-sizing: border-box;
+  /* Safari */
+  -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  word-wrap: break-word;
+}
+
+html {
+  font-size: 12px
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+menu,
+input,
+textarea,
+button,
+select,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+li.no-style {
+  list-style: none;
+}
+
+input,
+textarea,
+button,
+select {
+  outline: 0 none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body,
+body textarea {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 auto;
+}
+
+a {
+  color: #1e83fb;
+  text-decoration: none;
+  outline: 0 none;
+
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: #1e83fb;
+  }
+}
+
+//没有href属性的锚点继承父级的样式
+a:not([href]) {
+  color: inherit;
+}
+
